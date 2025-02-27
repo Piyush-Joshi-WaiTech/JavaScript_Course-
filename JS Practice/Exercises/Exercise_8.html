@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise_8</title>
+  </head>
+  <body>
+    <!--8a-->
+    <!-- Let's say in the amazon project, we have a basketball product. This product
+    has a name of 'basketball', a price of 2095 cents.create an object to represent
+    this product and display it in the console. -->
+
+    <script>
+      const product = {
+        name: "basketball",
+        price: 2095,
+      };
+      console.log(product);
+    </script>
+
+    <!--8b-->
+    <!-- Continuing from 8a, let's say we want to increase the price by 500 cents.Use
+    dot notation to increase the price, and display the updated object in the
+    console. -->
+
+    <script>
+      product.price += 500;
+      console.log(product);
+    </script>
+
+    <!--8c-->
+    <!-- Create a function 'comparePrice(product1, product2)', which takes 2
+    products(with 'name' and 'price' properties) and the product that is less
+    expensive. Create 2 products and try out the function. -->
+
+    <script>
+      function comparePrice(product1, product2) {
+        if (product1.price < product2.price) {
+          return product1;
+        } else {
+          return product2;
+        }
+      }
+
+      const product1 = {
+        name: "product1",
+        price: 1000,
+      };
+
+      const product2 = {
+        name: "product2",
+        price: 2000,
+      };
+
+      console.log(comparePrice(product1, product2));
+    </script>
+
+    <!--8d-->
+    <!-- Search how to repeat a string many times('test' 2 times => 'testtest') -->
+
+    <script>
+      console.log("test".repeat(2));
+    </script>
+
+    <!--8e-->
+    <!-- Using Google or an A.I. tool, search how to convert a string to all 
+     lowercase with javascript('Good Morning'=> 'good morning'). -->
+
+    <script>
+      console.log("Good Morning".toLowerCase());
+    </script>
+
+    <!--8f-->
+    <!-- We'll add localStorage to the calculator project. First, make a copy of the
+     project from exercise 7j (see the solution for 7j if needed). 
+        • Whenever we update the calculation, save it using .setltem() 
+        • When the page first loads, get the calculation using .getltem() 
+        • Use a default value of II if a calculation doesn't exist in local storage. -->
+
+    <script>
+      const display = document.querySelector(".display");
+      const buttons = document.querySelectorAll("button");
+
+      let calculation = localStorage.getItem("calculation") || "0";
+
+      display.textContent = calculation;
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          if (button.textContent === "C") {
+            calculation = "0";
+          } else if (button.textContent === "=") {
+            calculation = eval(calculation);
+          } else {
+            if (calculation === "0") {
+              calculation = button.textContent;
+            } else {
+              calculation += button.textContent;
+            }
+          }
+
+          display.textContent = calculation;
+          localStorage.setItem("calculation", calculation);
+        });
+      });
+    </script>
+
+    <!--8g-->
+    <!-- We'll improve the coin flip game from exercise 6j to be like the rock paper
+    scissors game. 
+        • Copy the code from exercise 6j (see the solution for 6j if needed). 
+        • Create 2 buttons to play the game heads tails 
+        • When clicking 'heads' play the game with guess = heads. 
+        • When clicking 'tails' play the game with guess = 'tails'. 
+        • Create a function 'playGame(guess)' to reuse the code. 
+    -->
+
+    <p>Coin Flip Game</p>
+
+    <button onclick="playGame('heads')">Heads</button>
+    <button onclick="playGame('tails')">Tails</button>
+
+    <script>
+      function playGame(guess) {
+        const computerGuess = pickComputerGuess();
+        let result = "";
+
+        if (guess === "heads") {
+          if (computerGuess === "heads") {
+            result = "Tie.";
+          } else if (computerGuess === "tails") {
+            result = "You lose.";
+          }
+        } else if (guess === "tails") {
+          if (computerGuess === "heads") {
+            result = "You win.";
+          } else if (computerGuess === "tails") {
+            result = "Tie.";
+          }
+        }
+
+        alert(
+          `You picked ${guess}. Computer picked ${computerGuess}. ${result}`
+        );
+      }
+
+      function pickComputerGuess() {
+        const randomNumber = Math.random();
+        if (randomNumber < 0.5) {
+          return "heads";
+        } else {
+          return "tails";
+        }
+      }
+    </script>
+
+    <!--8h-->
+    <!-- Create a score object { wins: O, losses: O }, update the score each time
+    after playing, and display the score in the console. -->
+
+    <script>
+      let score1 = {
+        wins: 0,
+        losses: 0,
+      };
+
+      function playGame(guess) {
+        const computerGuess = pickComputerGuess();
+        let result = "";
+
+        if (guess === "heads") {
+          if (computerGuess === "heads") {
+            result = "Tie.";
+          } else if (computerGuess === "tails") {
+            result = "You lose.";
+          }
+        } else if (guess === "tails") {
+          if (computerGuess === "heads") {
+            result = "You win.";
+          } else if (computerGuess === "tails") {
+            result = "Tie.";
+          }
+        }
+
+        if (result === "You win.") {
+          score1.wins++;
+        } else if (result === "You lose.") {
+          score.losses++;
+        }
+
+        console.log(score1);
+
+        alert(
+          `You picked ${guess}. Computer picked ${computerGuess}. ${result}`
+        );
+      }
+
+      function pickComputerGuess() {
+        const randomNumber = Math.random();
+        if (randomNumber < 0.5) {
+          return "heads";
+        } else {
+          return "tails";
+        }
+      }
+    </script>
+
+    <!--8i-->
+    <!-- Use localStorage to save and load the score (hint: you'll need to use
+    JSON.stringify() to convert the score object to a string). -->
+
+    <script>
+      let score = JSON.parse(localStorage.getItem("score")) || {
+        wins: 0,
+        losses: 0,
+      };
+
+      function playGame(guess) {
+        const computerGuess = pickComputerGuess();
+        let result = "";
+
+        if (guess === "heads") {
+          if (computerGuess === "heads") {
+            result = "Tie.";
+          } else if (computerGuess === "tails") {
+            result = "You lose.";
+          }
+        } else if (guess === "tails") {
+          if (computerGuess === "heads") {
+            result = "You win.";
+          } else if (computerGuess === "tails") {
+            result = "Tie.";
+          }
+        }
+
+        if (result === "You win.") {
+          score.wins++;
+        } else if (result === "You lose.") {
+          score.losses++;
+        }
+
+        localStorage.setItem("score", JSON.stringify(score));
+
+        console.log(score);
+
+        alert(
+          `You picked ${guess}. Computer picked ${computerGuess}. ${result}`
+        );
+      }
+
+      function pickComputerGuess() {
+        const randomNumber = Math.random();
+        if (randomNumber < 0.5) {
+          return "heads";
+        } else {
+          return "tails";
+        }
+      }
+    </script>
+  </body>
+</html>

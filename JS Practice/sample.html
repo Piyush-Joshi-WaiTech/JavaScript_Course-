@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Tree Structure</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .node {
+        cursor: pointer;
+        margin: 7px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container mt-3">
+      <ul class="list-unstyled">
+        <!-- Parent 1 -->
+        <li class="node" data-toggle="collapse" data-target="#parent1">
+          📁 Parent 1
+        </li>
+        <div id="parent1" class="collapse pl-4">
+          <ul class="list-unstyled">
+            <li>📄 Child 1</li>
+            <li>📄 Child 2</li>
+            <li>📄 Child 3</li>
+          </ul>
+        </div>
+
+        <!-- Parent 2 -->
+        <li class="node" data-toggle="collapse" data-target="#parent2">
+          📁 Parent 2
+        </li>
+        <div id="parent2" class="collapse pl-4">
+          <ul class="list-unstyled">
+            <li class="node" data-toggle="collapse" data-target="#subfolder">
+              📁 Sub-folder
+            </li>
+            <div id="subfolder" class="collapse pl-4">
+              <ul class="list-unstyled">
+                <li>📄 Nested Child 1</li>
+                <li>📄 Nested Child 2</li>
+                <li>📄 Nested Child 3</li>
+
+                <li
+                  class="node"
+                  data-toggle="collapse"
+                  data-target="#anotherSubfolder"
+                >
+                  📁 Another Sub-folder
+                </li>
+                <div id="anotherSubfolder" class="collapse pl-4">
+                  <ul class="list-unstyled">
+                    <li>📄 Another Nested Child 1</li>
+                    <li>📄 Another Nested Child 2</li>
+                  </ul>
+                </div>
+
+                <li
+                  class="node"
+                  data-toggle="collapse"
+                  data-target="#additionalSubfolder"
+                >
+                  📁 Additional Sub-folder
+                </li>
+                <div id="additionalSubfolder" class="collapse pl-4">
+                  <ul class="list-unstyled">
+                    <li>📄 Additional Nested Child 1</li>
+                    <li>📄 Additional Nested Child 2</li>
+                  </ul>
+                </div>
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Cart Calculation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .container {
+        max-width: 400px;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .total {
+        font-weight: bold;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Amazon Cart Summary</h2>
+      <p id="items"></p>
+      <p id="shipping"></p>
+      <p id="totalBeforeTax"></p>
+      <p id="estimatedTax"></p>
+      <p class="total" id="orderTotal"></p>
+    </div>
+
+    <script>
+      // Item prices and quantities
+      const basketballPrice = 20.95;
+      const tshirtPrice = 7.99;
+      const basketballQty = 2;
+      const tshirtQty = 2;
+      const shippingCost = 4.99;
+
+      // Calculations
+      const itemsTotal =
+        basketballPrice * basketballQty + tshirtPrice * tshirtQty;
+      const shippingTotal = shippingCost * 2;
+      const totalBeforeTax = itemsTotal + shippingTotal;
+      const estimatedTax = Math.round(totalBeforeTax * 0.1 * 100) / 100;
+      const orderTotal = totalBeforeTax + estimatedTax;
+
+      // Display results
+      document.getElementById("items").textContent = `Items (${
+        basketballQty + tshirtQty
+      }): $${itemsTotal.toFixed(2)}`;
+      document.getElementById(
+        "shipping"
+      ).textContent = `Shipping & handling: $${shippingTotal.toFixed(2)}`;
+      document.getElementById(
+        "totalBeforeTax"
+      ).textContent = `Total before tax: $${totalBeforeTax.toFixed(2)}`;
+      document.getElementById(
+        "estimatedTax"
+      ).textContent = `Estimated tax (10%): $${estimatedTax.toFixed(2)}`;
+      document.getElementById(
+        "orderTotal"
+      ).textContent = `Order total: $${orderTotal.toFixed(2)}`;
+    </script>
+  </body>
+</html>
