@@ -72,4 +72,43 @@
         });
     </script>
   </body>
+  <!--10c-->
+  <!-- classList has another method, classList.contains('class-nameI), which
+    checks if an element has a class. • Create a button:
+    <button class="js-button">Test</button>
+    • Use document.querySelector() and classList.contains(js-buttonI) to check
+    if this button has the class Ijs-button1. • console.log() the result. 
+    -->
+  <body>
+    <button class="js-button">Test</button>
+    <script>
+      const button = document.querySelector(".js-button");
+      console.log(button.classList.contains("js-button"));
+    </script>
+    <button class="toggle-button">Toggle</button>
+    <script>
+      const toggleButton = document.querySelector(".toggle-button");
+      toggleButton.addEventListener("click", function () {
+        toggleButton.classList.toggle("is-toggled");
+      });
+    </script>
+    <style>
+      .toggle-button {
+        background-color: rgb(230, 230, 230);
+        color: black;
+        border: none;
+        padding: 15px 30px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .toggle-button.is-toggled {
+        background-color: rgb(255, 216, 20);
+        color: black;
+      }
+    </style>
+  </body>
 </html>
