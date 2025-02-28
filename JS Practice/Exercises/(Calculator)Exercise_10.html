@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-top: -40px;
+        background-color: black;
+        transition: margin-top 0.3s ease;
+      }
+
+      .calculator {
+        width: 250px;
+        padding: 15px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .calculation {
+        font-size: 32px;
+        color: white;
+        text-align: right;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: black;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+
+      /* Shrinks when cleared */
+      .calculation.collapsed {
+        font-size: 0px;
+        padding: 0px;
+        margin-bottom: 60px;
+      }
+
+      .button-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
+
+      .calculator-button {
+        width: 50px;
+        height: 50px;
+        font-size: 35px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        /*   */
+      }
+
+      .gray-button {
+        background-color: rgb(80, 80, 80);
+        color: white;
+      }
+
+      .orange-button {
+        background-color: orange;
+        color: white;
+      }
+
+      .clear-button {
+        width: 80x;
+        background-color: rgb(80, 80, 80);
+        color: white;
+        font-size: medium;
+      }
+      .clearback-button {
+        width: 80px;
+        background-color: rgb(80, 80, 80);
+        color: white;
+        font-size: medium;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="calculator">
+      <p class="js-calculation calculation">0</p>
+
+      <div class="button-row">
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('1')"
+        >
+          1
+        </button>
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('2')"
+        >
+          2
+        </button>
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('3')"
+        >
+          3
+        </button>
+        <button
+          class="calculator-button orange-button"
+          onclick="updateCalculation(' + ')"
+        >
+          +
+        </button>
+      </div>
+
+      <div class="button-row">
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('4')"
+        >
+          4
+        </button>
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('5')"
+        >
+          5
+        </button>
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('6')"
+        >
+          6
+        </button>
+        <button
+          class="calculator-button orange-button"
+          onclick="updateCalculation(' - ')"
+        >
+          -
+        </button>
+      </div>
+
+      <div class="button-row">
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('7')"
+        >
+          7
+        </button>
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('8')"
+        >
+          8
+        </button>
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('9')"
+        >
+          9
+        </button>
+        <button
+          class="calculator-button orange-button"
+          onclick="updateCalculation(' * ')"
+        >
+          *
+        </button>
+      </div>
+
+      <div class="button-row">
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('0')"
+        >
+          0
+        </button>
+        <button
+          class="calculator-button gray-button"
+          onclick="updateCalculation('.')"
+        >
+          .
+        </button>
+        <button
+          class="calculator-button gray-button"
+          onclick="calculateResult()"
+        >
+          =
+        </button>
+        <button
+          class="calculator-button orange-button"
+          onclick="updateCalculation(' / ')"
+        >
+          /
+        </button>
+      </div>
+
+      <div class="button-row">
+        <button
+          class="calculator-button gray-button clear-button"
+          onclick="clearCalculation()"
+        >
+          Clear
+        </button>
+        <button
+          class="calculator-button gray-button clearback-button"
+          onclick="backspaceCalculation()"
+        >
+          ⌫
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let calculation = localStorage.getItem("calculation") || "";
+      const calcDisplay = document.querySelector(".js-calculation");
+      calcDisplay.classList.add("collapsed");
+
+      displayCalculation();
+
+      function updateCalculation(value) {
+        if (calculation === "0") {
+          calculation = value;
+        } else {
+          calculation += value;
+        }
+        displayCalculation();
+        localStorage.setItem("calculation", calculation);
+
+        // Expand when a button is pressed
+        if (calculation !== "") {
+          calcDisplay.classList.remove("collapsed");
+        }
+      }
+
+      function calculateResult() {
+        try {
+          calculation = eval(calculation).toString();
+        } catch {
+          calculation = "Error";
+        }
+        displayCalculation();
+        localStorage.setItem("calculation", calculation);
+      }
+
+      function clearCalculation() {
+        calculation = "0";
+        displayCalculation();
+        localStorage.setItem("calculation", calculation);
+
+        // Shrink when cleared
+        calcDisplay.classList.add("collapsed");
+      }
+
+      function backspaceCalculation() {
+        calculation = calculation.slice(0, -1);
+        displayCalculation();
+        localStorage.setItem("calculation", calculation);
+      }
+
+      function formatCalculation(calc) {
+        return calc.replace(/\d+(?:\.\d+)?/g, (num) => {
+          if (num.includes(".")) {
+            // Format decimal numbers correctly
+            let [intPart, decimalPart] = num.split(".");
+            return parseInt(intPart).toLocaleString() + "." + decimalPart;
+          }
+          return parseInt(num).toLocaleString();
+        });
+      }
+
+      function displayCalculation() {
+        calcDisplay.innerHTML =
+          calculation === "" ? "&nbsp;" : formatCalculation(calculation);
+        if (calculation !== "") {
+          calcDisplay.classList.remove("collapsed");
+        }
+      }
+    </script>
+  </body>
+</html>
