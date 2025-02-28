@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise_10</title>
+
+    <!-- Create the following buttons using HTML and CSS. The styles don't have to be exact (just use your best judgment). -->
+    <!-- 10a. Amazon button Add to Cart rgb(255, 216, 20)
+         10b. Uber buttons Request now rgb(230, 230, 230)
+    -->
+    <style>
+      body {
+        color: white;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .button-container {
+        display: flex;
+        gap: 10px;
+      }
+
+      .button {
+        background-color: rgb(230, 230, 230);
+        color: black;
+        border: none;
+        padding: 15px 30px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .button.dark {
+        background-color: black;
+        color: white;
+      }
+
+      .button:hover {
+        opacity: 0.8;
+      }
+
+      .button.dark:hover {
+        background-color: rgb(50, 50, 50);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="button-container">
+      <button class="button dark">Request now</button>
+      <button class="button">Schedule for later</button>
+    </div>
+
+    <script>
+      // Optionally handle button clicks
+      document
+        .querySelector(".button.dark")
+        .addEventListener("click", function () {
+          alert("Request now clicked!");
+        });
+
+      document
+        .querySelector(".button:not(.dark)")
+        .addEventListener("click", function () {
+          alert("Schedule for later clicked!");
+        });
+    </script>
+  </body>
+</html>
