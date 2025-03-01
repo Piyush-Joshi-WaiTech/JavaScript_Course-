@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise_11</title>
+  </head>
+  <body>
+    <!--11a-->
+    <!-- Create an array of numbers: const nums = [10, 20, 30]; Modify the last
+         value in this array and change it to 99. -->
+    <script>
+      const nums = [10, 20, 30];
+      console.log(nums);
+      nums[nums.length - 1] = 99;
+      console.log(nums);
+    </script>
+
+    <!--11b-->
+    <!-- Create a function getLastVaIue(array) that takes an array and returns the last value in the array. 
+          Hint: array indexes start at 0 so the last index is the number of values in the array minus 1
+          (lastindex = array.length - 1).
+                • getLastValue([1,20, 22, 24, 5]) => 5
+                • getLastValue(['hi','hello', 'good']) => 'good' 
+    -->
+
+    <script>
+      function getLastValue(array) {
+        return array[array.length - 1];
+      }
+      console.log(getLastValue([1, 20, 22, 24, 5]));
+      console.log(getLastValue(["hi", "hello", "good"]));
+    </script>
+
+    <!--11c-->
+    <!-- Create a function arraySwap(array) that takes an array and returns an array where the 
+         first and last values are swapped (or switched).
+            •arraySwap([ 20, 22, 24, 5]) => [5, 20, 22, 24, 1]
+            •arraySwap([ 'hi' 'hello', 'good']) => ['good', 'hello', 'hi'] 
+    -->
+
+    <script>
+      function arraySwap(array) {
+        const first = array[0];
+        const last = array[array.length - 1];
+        array[0] = last;
+        array[array.length - 1] = first;
+        return array;
+      }
+      console.log(arraySwap([20, 22, 24, 5]));
+      console.log(arraySwap(["hi", "hello", "good"]));
+    </script>
+
+    <!--11d-->
+    <!-- Create a for loop that counts up from 0 to 10, but counts up by 2 (0,2,4,...,8,10). 
+    -->
+
+    <script>
+      for (let i = 0; i <= 10; i += 2) {
+        console.log(i);
+      }
+    </script>
+
+    <!--11e-->
+    <!-- Create a for loop that counts down from 5 to O. lie.  
+    -->
+
+    <script>
+      for (let i = 5; i >= 0; i--) {
+        console.log(i);
+      }
+    </script>
+
+    <!--11f-->
+    <!-- Do exercises 11d and 11e, but using while loops. 
+    -->
+
+    <script>
+      let i = 0;
+      while (i <= 10) {
+        console.log(i);
+        i += 2;
+      }
+      let j = 5;
+      while (j >= 0) {
+        console.log(j);
+        j--;
+      }
+    </script>
+
+    <!--11g-->
+    <!-- Create a loop that takes an array of numbers and creates a new array where each number is increased by 1. 
+     • [1,2,3] => [2,3,4]  
+    -->
+
+    <script>
+      const numbers = [1, 2, 3];
+      const newNumbers = [];
+      for (let i = 0; i < numbers.length; i++) {
+        newNumbers.push(numbers[i] + 1);
+      }
+      console.log(newNumbers);
+    </script>
+
+    <!--11h-->
+    <!-- Create a function addOne(array) that takes an array of numbers and Ilh. returns an array where
+    each number is increased by 1. 
+        • addOne ([1, 2, 3]) = > [2, 3, 4]
+        • addOne ([-2, -1, O, 99]) = > [-1, O, 1, 100] 
+    -->
+
+    <script>
+      function addOne(array) {
+        const newArray = [];
+        for (let i = 0; i < array.length; i++) {
+          newArray.push(array[i] + 1);
+        }
+        return newArray;
+      }
+      console.log(addOne([1, 2, 3]));
+      console.log(addOne([-2, -1, 0, 99]));
+    </script>
+  </body>
+</html>
