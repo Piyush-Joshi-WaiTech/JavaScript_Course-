@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise_12</title>
+  </head>
+  <body>
+    <!--12a-->
+    <!-- Create a variable called 'add' and save a function inside. This
+         function will console.Iog(2 + 3); Run the function twice. 
+    -->
+
+    <script>
+      let add = function () {
+        console.log(2 + 3);
+      };
+      add();
+      add();
+    </script>
+
+    <!--12b-->
+    <!-- Continuing from exercise 12a, create a function runTwice(fun) that
+         takes a function (as a parameter) and runs it twice.
+            • runTwice(function() { console.Iog('12b'); }); => console.log('12b') twice
+            • runTwice(add); => console.log(5) twice 
+    -->
+
+    <script>
+      let runTwice = function (fun) {
+        fun();
+        fun();
+      };
+      runTwice(function () {
+        console.log("12b");
+      });
+      runTwice(add);
+    </script>
+
+    <!--12c-->
+    <!-- Create the button below. When clicking the button, after 1 second,
+         the text inside the button changes to 'Finished!'.
+         (Hint: use setTimeout() and the DOM) 
+    -->
+
+    <button id="btn">Click me!</button>
+    <script>
+      let btn = document.getElementById("btn");
+      btn.addEventListener("click", function () {
+        setTimeout(function () {
+          btn.innerText = "Finished!";
+        }, 1000);
+      });
+    </script>
+
+    <!--12d-->
+    <!-- Continuing from exercise 12c, modify the button so that when we click it,
+         the text immediately changes to 'Loading...', and then after 1 second, it
+         changes to 'Finished!'. 
+    -->
+
+    <button id="btn2">Click me!</button>
+    <script>
+      let btn2 = document.getElementById("btn2");
+      btn2.addEventListener("click", function () {
+        btn2.innerText = "Loading...";
+        setTimeout(function () {
+          btn2.innerText = "Finished!";
+        }, 1000);
+      });
+    </script>
+
+    <!--12e-->
+    <!-- Create the 'Add to cart' button below. When clicking this button, 
+         display the message 'Added' below the button. Then, after 2 seconds, 
+         remove the message.
+    -->
+
+    <button id="btn3">Add to cart</button>
+    <p id="message"></p>
+    <script>
+      let btn3 = document.getElementById("btn3");
+      let message = document.getElementById("message");
+      btn3.addEventListener("click", function () {
+        message.innerText = "Added";
+        setTimeout(function () {
+          message.innerText = "";
+        }, 2000);
+      });
+    </script>
+
+    <!--12f-->
+    <!-- Continuing from 12e, if we click the button, wait 1 to 1.5 seconds, and then click the button again, notice that 
+         the second time, the message disappears very quickly (because the first setTimeout is still running and will 
+         make the message disappear very soon).
+        • Modify the code so when we click the button, it "refreshes" the 2 second wait time 
+          (waits for 2 seconds again and removes message).
+        • Hint: you can cancel the previous setTimeout using clear Timeout() 
+    -->
+
+    <button id="btn4">Add to cart</button>
+    <p id="message2"></p>
+    <script>
+      let btn4 = document.getElementById("btn4");
+      let message2 = document.getElementById("message2");
+      let timeoutId;
+      btn4.addEventListener("click", function () {
+        message2.innerText = "Added";
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function () {
+          message2.innerText = "";
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>
