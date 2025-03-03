@@ -6,7 +6,22 @@
     <title>Advanced Functions</title>
   </head>
   <body>
+    <button onclick="" class="js-button">Click</button>
     <script>
+      const buttonElement = document.querySelector(".js-button");
+
+      const eventListener = () => {
+        console.log("click");
+      };
+
+      buttonElement.addEventListener("click", eventListener);
+
+      buttonElement.removeEventListener("click", eventListener);
+
+      buttonElement.addEventListener("click", () => {
+        console.log("click2");
+      });
+
       //   function greeting() {
       //     console.log("Hello");
       //   }
@@ -40,15 +55,40 @@
       //     console.log("hello4");
       //   });
 
-      setTimeout(function () {
-        console.log("timeout");
-      }, 3000);
+      // setTimeout(function () {
+      //   console.log("timeout");
+      // }, 3000);
 
-      console.log("next line");
+      // console.log("next line");
 
-      setInterval(function () {
-        console.log("interval");
-      }, 3000);
+      // setInterval(function () {
+      //   console.log("interval");
+      // }, 3000);
+
+      // const regularFunction = function (param, param2) {
+      //   console.log("regular function");
+      //   return 5;
+      // };
+      // regularFunction();
+
+      // const arrowFunction = (param, param2) => {
+      //   console.log("arrow function");
+      //   return 5;
+      // };
+      // arrowFunction();
+
+      // const oneParam = (param) => {
+      //   console.log(param + 1);
+      // };
+      // oneParam(2);
+
+      // const oneLine = () => 2 + 3;
+      // console.log(oneLine());
+
+      // const object2 = {
+      //   method: () => {},
+      //   method() {},
+      // };
     </script>
   </body>
 </html>
