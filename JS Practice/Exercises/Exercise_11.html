@@ -90,7 +90,7 @@
 
     <!--11g-->
     <!-- Create a loop that takes an array of numbers and creates a new array where each number is increased by 1. 
-     • [1,2,3] => [2,3,4]  
+          • [1,2,3] => [2,3,4]  
     -->
 
     <script>
@@ -103,10 +103,10 @@
     </script>
 
     <!--11h-->
-    <!-- Create a function addOne(array) that takes an array of numbers and Ilh. returns an array where
-    each number is increased by 1. 
-        • addOne ([1, 2, 3]) = > [2, 3, 4]
-        • addOne ([-2, -1, O, 99]) = > [-1, O, 1, 100] 
+    <!-- Create a function addOne(array) that takes an array of numbers and 11h. returns an array where
+         each number is increased by 1. 
+            • addOne ([1, 2, 3]) = > [2, 3, 4]
+            • addOne ([-2, -1, O, 99]) = > [-1, O, 1, 100] 
     -->
 
     <script>
@@ -119,6 +119,49 @@
       }
       console.log(addOne([1, 2, 3]));
       console.log(addOne([-2, -1, 0, 99]));
+    </script>
+
+    <!--11o-->
+    <!-- Create an array of strings, loop over the array, and check if the string 'search' is inside the array. 
+         If it is, console.log() the index of 'search' in in the array. If not, console.log '-1'. 
+            • [hello', 'world', 'search', 'good'] => console.log(2) 
+            • ['not', 'found'] => console.log(-l) 
+    -->
+
+    <script>
+      const strings = ["hello", "world", "search", "good"];
+      let found = false;
+      for (let i = 0; i < strings.length; i++) {
+        if (strings[i] === "search") {
+          console.log(i);
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        console.log(-1);
+      }
+    </script>
+
+    <!--11p-->
+    <!-- Modify 11o so that if 'search' appears multiple times in the array, it will
+         console.log() the index of the first appearance of 'search'. Use break; 
+            • ['hello', 'world', 'search', 'good', 'search'] => console.log(2) 
+    -->
+
+    <script>
+      const strings1 = ["hello", "world", "search", "good", "search"];
+      let found1 = false;
+      for (let i = 0; i < strings1.length; i++) {
+        if (strings1[i] === "search") {
+          console.log(i);
+          found1 = true;
+          break;
+        }
+      }
+      if (!found1) {
+        console.log(-1);
+      }
     </script>
   </body>
 </html>
