@@ -60,6 +60,25 @@ document.querySelector(".js-reset-score").addEventListener("click", () => {
   alert("Score has been reset.");
 });
 
+document.body.addEventListener("keydown", (event) => {
+  if (event.key === "r") {
+    playGame("rock");
+  } else if (event.key === "p") {
+    playGame("paper");
+  } else if (event.key === "s") {
+    playGame("scissors");
+  } else if (event.key === "a") {
+    autoPlay();
+  } else if (event.key === "Escape") {
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    localStorage.removeItem("score");
+    updateScoreElement();
+    alert("Score has been reset.");
+  }
+});
+
 function playGame(playerMove) {
   const computerMove = pickComputerMove();
   let result = "";
