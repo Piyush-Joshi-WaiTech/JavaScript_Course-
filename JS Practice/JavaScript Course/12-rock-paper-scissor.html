@@ -4,27 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./styles/12-rock-paper-scissors.css" />
   </head>
   <body>
     <p class="title">Rock Paper Scissors</p>
 
-    <button class="move-button js-rock-button">
+    <button class="move-button js-rock-button btn btn-primary">
       <img src="Images/rock-emoji.png" class="move-icon" />
     </button>
-    <button class="move-button js-paper-button">
+    <button class="move-button js-paper-button btn btn-success">
       <img src="Images/paper-emoji.png" class="move-icon" />
     </button>
-    <button class="move-button js-scissors-button">
+    <button class="move-button js-scissors-button btn btn-danger">
       <img src="Images/scissors-emoji.png" class="move-icon" />
     </button>
 
     <p class="js-result result"></p>
     <p class="js-move"></p>
     <p class="js-score score"></p>
-    <button class="reset-score-button js-reset-score">Reset Score</button>
+    <button class="reset-score-button js-reset-score btn btn-warning">
+      Reset Score
+    </button>
 
-    <button class="auto-play-button js-auto-play-button">Auto Play</button>
+    <button class="auto-play-button js-auto-play-button btn btn-info">
+      Auto Play
+    </button>
+
+    <!-- Bootstrap JS (Optional for some features) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="./scripts/12-rock-paper-scissors.js"></script>
   </body>
