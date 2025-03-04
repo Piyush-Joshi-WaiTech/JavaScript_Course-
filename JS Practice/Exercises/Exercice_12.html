@@ -6,6 +6,7 @@
     <title>Exercise_12</title>
   </head>
   <body>
+    <p>Using .getElementById</p>
     <!--12a-->
     <!-- Create a variable called 'add' and save a function inside. This
          function will console.log(2 + 3); Run the function twice. 
@@ -93,9 +94,9 @@
     <!-- Continuing from 12e, if we click the button, wait 1 to 1.5 seconds, and then click the button again, notice that 
          the second time, the message disappears very quickly (because the first setTimeout is still running and will 
          make the message disappear very soon).
-        • Modify the code so when we click the button, it "refreshes" the 2 second wait time 
-          (waits for 2 seconds again and removes message).
-        • Hint: you can cancel the previous setTimeout using clear Timeout() 
+          • Modify the code so when we click the button, it "refreshes" the 2 second wait time 
+            (waits for 2 seconds again and removes message).
+          • Hint: you can cancel the previous setTimeout using clear Timeout() 
     -->
 
     <button id="btn4">Add to cart</button>
@@ -113,6 +114,7 @@
       });
     </script>
 
+    <p>Using Arrow Function</p>
     <!--12j-->
     <!-- Create an arrow function called 'multiply' that takes 2 numbers,
        multiplies them together, and returns the result.
@@ -187,8 +189,8 @@
 
     <!--12o-->
     <!-- Update exercise 12n to only remove the first 2 eggs from the array. 
-       Again, use .filter() instead of a loop. 
-        •removeEgg1[('egg, 'apple', 'egg', 'egg', 'ham']) => ['apple', 'egg', 'ham'] 
+         Again, use .filter() instead of a loop. 
+          •removeEgg1[('egg, 'apple', 'egg', 'egg', 'ham']) => ['apple', 'egg', 'ham'] 
     -->
 
     <script>
@@ -203,6 +205,124 @@
         });
       };
       console.log(removeEgg1(["egg", "apple", "egg", "egg", "ham"])); // ['apple', 'egg', 'ham']
+    </script>
+
+    <!--12p-->
+    <!-- Go back to the earlier exercises in lesson 12 (12c - 12i) and switch the
+       code to use arrow functions. (When passing a function into another function,
+       use arrow functions. Otherwise, you can use either syntax.)  
+    -->
+
+    <!--12c Arrow Functions-->
+    <button id="btn12">Click me!</button>
+    <script>
+      let btn12 = document.getElementById("btn12");
+      btn12.addEventListener("click", () => {
+        setTimeout(() => {
+          btn12.innerText = "Finished!";
+        }, 1000);
+      });
+    </script>
+
+    <!--12i Arrow Functions-->
+    <button id="btn13">Click me!</button>
+    <script>
+      let btn13 = document.getElementById("btn13");
+      btn13.addEventListener("click", () => {
+        btn13.innerText = "Loading...";
+        setTimeout(() => {
+          btn13.innerText = "Finished!";
+        }, 1000);
+      });
+    </script>
+
+    <!--12e-->
+    <button id="btn14">Add to cart</button>
+    <p id="message"></p>
+    <script>
+      let btn14 = document.getElementById("btn14");
+      let message1 = document.getElementById("message1");
+      btn14.addEventListener("click", () => {
+        message.innerText = "Added";
+        setTimeout(() => {
+          message.innerText = "";
+        }, 2000);
+      });
+    </script>
+
+    <!--12f-->
+    <button id="btn15">Add to cart</button>
+    <p id="message2"></p>
+    <script>
+      let btn15 = document.getElementById("btn15");
+      let message3 = document.getElementById("message3");
+      let timeoutId1;
+      btn15.addEventListener("click", () => {
+        message2.innerText = "Added";
+        clearTimeout(timeoutId1);
+        timeoutId = setTimeout(() => {
+          message2.innerText = "";
+        }, 2000);
+      });
+    </script>
+
+    <!--12q-->
+    <!-- Go back to the earlier exercises in lesson 12 (12c - 12i) and instead of using
+         onclick="...", switch the code to use .addEventListener('click',...)
+    -->
+
+    <p>Using .addEventListener</p>
+    <!--12c Arrow Functions with addEventListener-->
+    <button id="btn20">Click me!</button>
+    <script>
+      let btn20 = document.getElementById("btn20");
+      btn20.addEventListener("click", () => {
+        setTimeout(() => {
+          btn20.innerText = "Finished!";
+        }, 1000);
+      });
+    </script>
+
+    <!--12d Arrow Functions with addEventListener-->
+    <button id="btn21">Click me!</button>
+    <script>
+      let btn21 = document.getElementById("btn21");
+      btn21.addEventListener("click", () => {
+        btn21.innerText = "Loading...";
+        setTimeout(() => {
+          btn21.innerText = "Finished!";
+        }, 1000);
+      });
+    </script>
+
+    <!--12e Arrow Functions with addEventListener-->
+    <button id="btn22">Add to cart</button>
+    <p id="message12"></p>
+    <script>
+      let btn22 = document.getElementById("btn22");
+      let message12 = document.getElementById("message12");
+      btn22.addEventListener("click", () => {
+        message12.innerText = "Added";
+        setTimeout(() => {
+          message12.innerText = "";
+        }, 2000);
+      });
+    </script>
+
+    <!--12f Arrow Functions with addEventListener-->
+    <button id="btn23">Add to cart</button>
+    <p id="message23"></p>
+    <script>
+      let btn23 = document.getElementById("btn23");
+      let message23 = document.getElementById("message23");
+      let timeoutId23;
+      btn23.addEventListener("click", () => {
+        message23.innerText = "Added";
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          message23.innerText = "";
+        }, 2000);
+      });
     </script>
   </body>
 </html>
